@@ -6,8 +6,8 @@ import com.happysg.radar.compat.vs2.PhysicsHandler;
 import com.happysg.radar.config.RadarConfig;
 import com.happysg.radar.registry.AllDataBehaviors;
 import com.happysg.radar.registry.ModBlocks;
-import net.createmod.catnip.lang.Lang;
-import net.createmod.catnip.outliner.Outliner;
+
+import com.simibubi.create.CreateClient;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -132,7 +132,7 @@ public class DataLinkBlockItem extends BlockItem {
             lastShownPos = selectedPos;
         }
 
-        Outliner.getInstance().showAABB("target", lastShownAABB)
+        CreateClient.OUTLINER.showAABB("target", lastShownAABB)
                 .colored(0x6fa8dc)
                 .lineWidth(1 / 16f);
     }
