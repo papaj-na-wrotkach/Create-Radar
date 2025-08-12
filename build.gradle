@@ -133,18 +133,16 @@ dependencies {
     // Forge stuff
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    compileOnly fg.deobf("maven.modrinth:architectury-api:${architectury_api_version}+forge")
+    // compileOnly fg.deobf("maven.modrinth:architectury-api:${architectury_api_version}+forge")
 
     compileOnly "thedarkcolour:kotlinforforge:${forge_kotlin_version}"
-
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
     // JEI
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
     // Create and it's addons
     implementation fg.deobf("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
-    runtimeOnly fg.deobf("com.simibubi.create:create-${minecraft_version}:${create_version}")
+    // runtimeOnly fg.deobf("com.simibubi.create:create-${minecraft_version}:${create_version}")
 
     implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
 
@@ -154,10 +152,10 @@ dependencies {
 
     // CBC
     implementation fg.deobf("com.rbasamoyai:ritchiesprojectilelib:${rpl_version}") { transitive = false }
-    runtimeOnly fg.deobf("com.rbasamoyai:ritchiesprojectilelib:${rpl_version}") { transitive = false }
+    // runtimeOnly fg.deobf("com.rbasamoyai:ritchiesprojectilelib:${rpl_version}") { transitive = false }
 
     implementation fg.deobf("com.rbasamoyai:createbigcannons:${cbc_version}") { transitive = false }
-    runtimeOnly fg.deobf("com.rbasamoyai:createbigcannons:${cbc_version}") { transitive = false }
+    // runtimeOnly fg.deobf("com.rbasamoyai:createbigcannons:${cbc_version}") { transitive = false }
 
 //    compileOnly fg.deobf("maven.modrinth:cbcmodernwarfare:${cbc_mw_version}+mc.${minecraft_version}-forge")
     implementation fg.deobf("curse.maven:cbc-modern-warfare-1078220:6262257")
@@ -183,8 +181,11 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
     // Additional libraries
-    implementation "org.apache.commons:commons-math3:3.6.1"
-    runtimeOnly "org.apache.commons:commons-math3:3.6.1"
+    jarJar('org.apache.commons:commons-math3:3.6.1') {
+        transitive = false
+        jarJar.ranged(it, '[3.6,3.6.1)')
+    }
+    minecraftLibrary "org.apache.commons:commons-math3:3.6.1"
     compileOnly "org.joml:joml:1.10.5"
     compileOnly "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
 }
