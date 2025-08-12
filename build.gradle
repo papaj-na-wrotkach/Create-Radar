@@ -61,7 +61,6 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-
 repositories {
     gradlePluginPortal()
     mavenCentral()
@@ -129,13 +128,12 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-
     //math3
     jarJar('org.apache.commons:commons-math3:3.6.1') {
         transitive = false
         jarJar.ranged(it, '[3.6.1,)')
     }
-    implementation 'org.apache.commons:commons-math3:3.6.1'
+    minecraftLibrary 'org.apache.commons:commons-math3:3.6.1'
 
     //Create
     implementation(fg.deobf("com.simibubi.create:create-${minecraft_version}:${create_version}") { transitive = false })
